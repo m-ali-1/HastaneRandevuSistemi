@@ -6,6 +6,7 @@ using Hastane.Utilities;
 using Hastane.Repositories.Interfaces;
 using Hastane.Repositories.Implementation;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Hastane.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 builder.Services.AddScoped<IDbInitializier,DbInitializier>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddTransient<IDepartmentInfo, DepartmentService>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -42,7 +44,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{Area=Hasta}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{Area=Admin}/{controller=Departments}/{action=Index}/{id?}");
 
 app.Run();
 void DataSeeding()
