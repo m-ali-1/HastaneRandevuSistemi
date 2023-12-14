@@ -13,6 +13,5 @@ namespace Hastane.Models
         public string Type { get; set; }
         public string Description { get; set; }
         public ICollection<Clinic> Clinics { get; set; }
-        public ICollection<Doktor> Doktors { get; set; }
     }
 }

@@ -22,6 +22,7 @@ builder.Services.AddScoped<IDbInitializier,DbInitializier>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.AddTransient<IDepartmentInfo, DepartmentService>();
+builder.Services.AddTransient<IClinicService, ClinicService>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -44,7 +45,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{Area=Admin}/{controller=Departments}/{action=Index}/{id?}");
+    pattern: "{Area=Admin}/{controller=Clinics}/{action=Index}/{id?}");
 
 app.Run();
 void DataSeeding()

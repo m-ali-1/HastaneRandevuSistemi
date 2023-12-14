@@ -4,5 +4,9 @@
     {
         public int Id { get; set; }
         public string Number { get; set; }
+        public string Status { get; set; }
+        public int DepartmentId { get; set; }
+        public Department Department { get; set; }
+        public ICollection<Doktor> Doktors { get; set; }
     }
 }
