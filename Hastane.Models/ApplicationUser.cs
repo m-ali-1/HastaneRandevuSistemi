@@ -13,6 +13,7 @@ namespace Hastane.Models
         public Gender Gender { get; set; }
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public bool IsDoctor { get; set; }
         public ICollection<Appointment> Appointments { get; set; }
     }
 }

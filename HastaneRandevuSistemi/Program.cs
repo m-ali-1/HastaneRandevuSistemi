@@ -45,7 +45,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{Area=Admin}/{controller=Clinics}/{action=Index}/{id?}");
+    pattern: "{Area=Admin}/{controller=Departments}/{action=Index}/{id?}");
 
 app.Run();
 void DataSeeding()

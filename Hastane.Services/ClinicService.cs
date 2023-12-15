@@ -35,7 +35,7 @@ namespace Hastane.Services
             {
                 int ExcludeRecords = (pageSize * pageNumber) - pageSize;
 
-                var modelList = _unitOfWork.GenericRepository<Clinic>().GetAll()
+                var modelList = _unitOfWork.GenericRepository<Clinic>().GetAll(includeProperties:"Department")
                     .Skip(ExcludeRecords).Take(pageSize).ToList();
 
                 totalCount = _unitOfWork.GenericRepository<Clinic>().GetAll().ToList().Count;
@@ -77,7 +77,7 @@ namespace Hastane.Services
             var ModelById = _unitOfWork.GenericRepository<Clinic>().GetById(model.Id);
             ModelById.Number = Clinic.Number;
             ModelById.Status = Clinic.Status;
-            ModelById.DepartmentId = Clinic.DepartmentInfoId;
+            ModelById.DepartmentId = Clinic.DepartmentInfo;
             _unitOfWork.GenericRepository<Clinic>().Update(ModelById);
             _unitOfWork.Save();
         }

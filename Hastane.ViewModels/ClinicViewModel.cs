@@ -12,7 +12,8 @@ namespace Hastane.ViewModels
         public int Id { get; set; }
         public string Number { get; set; }
         public string Status { get; set; }
-        public int DepartmentInfoId { get; set; }
+        public int DepartmentInfo { get; set; }
+        public Department Department { get; set; }
         public ClinicViewModel()
         {
 
@@ -22,7 +23,8 @@ namespace Hastane.ViewModels
             Id = model.Id;
             Number = model.Number;
             Status = model.Status;
-            DepartmentInfoId = model.DepartmentId;
+            DepartmentInfo = model.DepartmentId;
+            Department = model.Department;
             
         }
         public Clinic ConvertViewModel(ClinicViewModel model)
@@ -32,7 +34,8 @@ namespace Hastane.ViewModels
                 Id = model.Id,
                 Number = model.Number,
                 Status = model.Status,
-                DepartmentId = model.DepartmentInfoId
+                DepartmentId = model.DepartmentInfo,
+                Department = model.Department
             };
         }
 
