@@ -23,6 +23,7 @@ builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.AddTransient<IDepartmentInfo, DepartmentService>();
 builder.Services.AddTransient<IClinicService, ClinicService>();
+builder.Services.AddTransient<IApplicationUserService, ApplicationUserService>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
