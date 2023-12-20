@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hastane.Repositories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231215173635_ModeltoDatabase")]
+    [Migration("20231220201644_ModeltoDatabase")]
     partial class ModeltoDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,9 @@ namespace Hastane.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("DoctorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("HastaId")
                         .HasColumnType("nvarchar(450)");
 
@@ -51,6 +54,8 @@ namespace Hastane.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
 
                     b.HasIndex("HastaId");
 
@@ -108,7 +113,7 @@ namespace Hastane.Repositories.Migrations
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("Hastane.Models.Doktor", b =>
+            modelBuilder.Entity("Hastane.Models.Doctor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -116,18 +121,31 @@ namespace Hastane.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ClinicId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDoctor")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Specialist")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -356,7 +374,14 @@ namespace Hastane.Repositories.Migrations
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDoctor")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Specialist")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -365,8 +390,12 @@ namespace Hastane.Repositories.Migrations
 
             modelBuilder.Entity("Hastane.Models.Appointment", b =>
                 {
-                    b.HasOne("Hastane.Models.ApplicationUser", "Hasta")
+                    b.HasOne("Hastane.Models.Doctor", null)
                         .WithMany("Appointments")
+                        .HasForeignKey("DoctorId");
+
+                    b.HasOne("Hastane.Models.ApplicationUser", "Hasta")
+                        .WithMany()
                         .HasForeignKey("HastaId");
 
                     b.Navigation("Hasta");
@@ -383,7 +412,7 @@ namespace Hastane.Repositories.Migrations
                     b.Navigation("Department");
                 });
 
-            modelBuilder.Entity("Hastane.Models.Doktor", b =>
+            modelBuilder.Entity("Hastane.Models.Doctor", b =>
                 {
                     b.HasOne("Hastane.Models.Clinic", "Clinic")
                         .WithMany("Doktors")
@@ -455,7 +484,7 @@ namespace Hastane.Repositories.Migrations
                     b.Navigation("Clinics");
                 });
 
-            modelBuilder.Entity("Hastane.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Hastane.Models.Doctor", b =>
                 {
                     b.Navigation("Appointments");
                 });

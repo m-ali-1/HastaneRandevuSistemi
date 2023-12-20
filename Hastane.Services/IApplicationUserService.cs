@@ -11,8 +11,8 @@ namespace Hastane.Services
     public interface IApplicationUserService
     {
         PagedResult<ApplicationUserViewModel> GetAll(int pageNumber, int pageSize);
-        PagedResult<ApplicationUserViewModel> GetAllDoktor(int pageNumber, int pageSize);
         PagedResult<ApplicationUserViewModel> GetAllHasta(int pageNumber, int pageSize);
+
 
     }
 }

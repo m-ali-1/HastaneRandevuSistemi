@@ -1,6 +1,7 @@
 ﻿using cloudscribe.Pagination.Models;
 using Hastane.Services;
 using Hastane.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HastaneRandevuSistemi.Areas.Admin.Controllers

@@ -10,5 +10,6 @@ namespace Hastane.Utilities
     {
         public const string WebSite_Admin = "Admin";
         public const string WebSite_Hasta = "Hasta";
+        public const string WebSite_Doctor = "Doctor";
     }
 }

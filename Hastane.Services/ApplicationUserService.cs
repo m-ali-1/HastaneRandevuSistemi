@@ -19,6 +19,7 @@ namespace Hastane.Services
             _unitOfWork = unitOfWork;
         }
 
+
         public PagedResult<ApplicationUserViewModel> GetAll(int pageNumber, int pageSize)
         {
             var vm = new ApplicationUserViewModel();
@@ -50,15 +51,14 @@ namespace Hastane.Services
             return result;
         }
 
-        public PagedResult<ApplicationUserViewModel> GetAllDoktor(int pageNumber, int pageSize)
-        {
-            throw new NotImplementedException();
-        }
 
         public PagedResult<ApplicationUserViewModel> GetAllHasta(int pageNumber, int pageSize)
         {
             throw new NotImplementedException();
         }
+
+
+
         private List<ApplicationUserViewModel>ConvertModelToViewModelList(List<ApplicationUser> modelList)
         {
             return modelList.Select(x => new ApplicationUserViewModel(x)).ToList();

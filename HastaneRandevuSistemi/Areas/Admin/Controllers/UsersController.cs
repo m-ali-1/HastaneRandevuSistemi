@@ -1,9 +1,13 @@
-﻿using Hastane.Services;
+﻿using Hastane.Models;
+using Hastane.Services;
+using Hastane.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HastaneRandevuSistemi.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class UsersController : Controller
     {
         private IApplicationUserService _userService;
@@ -17,5 +21,6 @@ namespace HastaneRandevuSistemi.Areas.Admin.Controllers
         {
             return View(_userService.GetAll(pageNumber,pageSize));
         }
+
     }
 }

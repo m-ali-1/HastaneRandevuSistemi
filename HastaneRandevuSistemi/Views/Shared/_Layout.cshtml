@@ -23,19 +23,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Departments" asp-action="Index">Ana Bilim Dalları</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Departments" asp-action="Index">Department</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Clinics" asp-action="Index">Klinikler</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Clinics" asp-action="Index">Clinic</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Users" asp-action="Index">Hasta Listesi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Users" asp-action="Index">User</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Hasta</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="DoktorUser" asp-action="AllDoctors">Doktor Listesi</a>
                         </li>
                     </ul>
                     <partial name = "_LoginPartial"/>

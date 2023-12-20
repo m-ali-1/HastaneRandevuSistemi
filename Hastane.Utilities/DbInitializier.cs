@@ -16,8 +16,8 @@ namespace Hastane.Utilities
         private RoleManager<IdentityRole> _roleManager;
         private ApplicationDbContext _context;
 
-        public DbInitializier(UserManager<IdentityUser> userManager, 
-            RoleManager<IdentityRole> roleManager, 
+        public DbInitializier(UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager,
             ApplicationDbContext context)
         {
             _userManager = userManager;
@@ -27,34 +27,38 @@ namespace Hastane.Utilities
 
         public void Initialize()
         {
-            try 
+            try
             {
                 if (_context.Database.GetPendingMigrations().Count() > 0)
                 {
                     _context.Database.Migrate();
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
-            if (!_roleManager.RoleExistsAsync(WebSiteRoles.WebSite_Admin).GetAwaiter().GetResult()) 
+            if (!_roleManager.RoleExistsAsync(WebSiteRoles.WebSite_Admin).GetAwaiter().GetResult())
             {
                 _roleManager.CreateAsync(new IdentityRole(WebSiteRoles.WebSite_Admin)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(WebSiteRoles.WebSite_Hasta)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(WebSiteRoles.WebSite_Doctor)).GetAwaiter().GetResult();
 
-                _userManager.CreateAsync(new ApplicationUser
+                var AppUser = new IdentityUser
                 {
-                    UserName = "Ali",
+                    UserName = "ali@denemeali.com",
                     Email = "ali@denemeali.com"
-                },"Ali@123").GetAwaiter().GetResult();
+                };
 
-                var AppUser = _context.ApplicationUsers.FirstOrDefault(x => x.Email == "ali@denemeali.com");
-                if (AppUser != null) 
+                _userManager.CreateAsync(AppUser, "AliDeneme.123").GetAwaiter().GetResult();
+
+                var createdAppUser = _context.Users.FirstOrDefault(x => x.Email == "ali@denemeali.com");
+                if (createdAppUser != null)
                 {
-                    _userManager.AddToRoleAsync(AppUser, WebSiteRoles.WebSite_Admin).GetAwaiter().GetResult();
+                    _userManager.AddToRoleAsync(createdAppUser, WebSiteRoles.WebSite_Admin).GetAwaiter().GetResult();
                 }
             }
+
 
         }
     }

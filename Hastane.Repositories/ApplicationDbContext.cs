@@ -19,7 +19,7 @@ namespace Hastane.Repositories
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Clinic> Clinics { get; set; }
-        public DbSet<Doktor> Doktors { get; set; }
+        public DbSet<Doctor> Doktors { get; set; }
 
     }
 }

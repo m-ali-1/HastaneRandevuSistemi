@@ -15,6 +15,8 @@ namespace Hastane.ViewModels
         public Gender Gender { get; set; }
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public bool IsDoctor { get; set; }
+        public string Specialist { get; set; }
         public ICollection<Appointment> Appointments { get; set; }
         public ApplicationUserViewModel()
         {
@@ -29,6 +31,8 @@ namespace Hastane.ViewModels
             Appointments = user.Appointments;
             Email = user.Email;
             UserName = user.UserName;
+            IsDoctor = user.IsDoctor;
+            Specialist = user.Specialist;
         }
         public ApplicationUser ConvertViewModel(ApplicationUserViewModel user)
         {
@@ -40,7 +44,9 @@ namespace Hastane.ViewModels
                 DateOfBirth = user.DateOfBirth,
                 Appointments = user.Appointments,
                 Email = user.Email,
-                UserName = user.UserName
+                UserName = user.UserName,
+                IsDoctor = user.IsDoctor,
+                Specialist = user.Specialist
             };
         }
     }
