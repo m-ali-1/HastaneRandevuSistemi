@@ -33,6 +33,7 @@ builder.Services.AddMvc().AddRazorOptions(options =>
     options.ViewLocationFormats.Add("/Areas/Admin/Views/{1}/{0}.cshtml");
     options.ViewLocationFormats.Add("/Areas/Admin/Views/Shared/{0}.cshtml");
     options.ViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
+    options.ViewLocationFormats.Add("/Pages/Shared/{0}.cshtml");
 });
 
 builder.Services.AddControllersWithViews();
@@ -61,7 +62,7 @@ app.MapRazorPages();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
-        name: "areas",
+        name: "admin",
         pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );
 

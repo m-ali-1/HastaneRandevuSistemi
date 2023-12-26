@@ -9,8 +9,8 @@ namespace Hastane.Models
     public class Timing
     {
         public int Id { get; set; }
-        public Guid DoctorId { get; set; }
-        public ApplicationUser Doctor { get; set; }
+        public int DoctorId { get; set; }
+        public Doctor Doctor { get; set; }
         public DateTime ScheduleDate { get; set; }
         public int MorningShiftStartTime { get; set; }
         public int MorningShiftEndTime { get; set; }

@@ -1,6 +1,7 @@
 ﻿using Hastane.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,8 @@ namespace Hastane.ViewModels
     public class TimingViewModel
     {
         public int Id { get; set; }
-        public Guid DoctorId { get; set; }
-        public ApplicationUser Doctor { get; set; }
+        public int DoctorId { get; set; }
+        public Doctor Doctor { get; set; }
         public DateTime ScheduleDate { get; set; }
         public int MorningShiftStartTime { get; set; }
         public int MorningShiftEndTime { get; set; }
@@ -40,7 +41,6 @@ namespace Hastane.ViewModels
             Duration= model.Duration;
             Status = model.Status;
             DoctorId = model.DoctorId;
-            Doctor = model.Doctor;
         }
         public Timing ConverViewModel(TimingViewModel model)
         {
@@ -54,8 +54,7 @@ namespace Hastane.ViewModels
                 AfternoonShiftEndTime = model.AfternoonShiftEndTime,
                 Duration = model.Duration,
                 Status = model.Status,
-                DoctorId = model.DoctorId,
-                Doctor=model.Doctor
+                DoctorId = model.DoctorId
             };
         }
     }

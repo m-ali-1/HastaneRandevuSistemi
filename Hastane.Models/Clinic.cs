@@ -7,6 +7,5 @@
         public string Status { get; set; }
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
-        public ICollection<Doctor> Doktors { get; set; }
     }
 }

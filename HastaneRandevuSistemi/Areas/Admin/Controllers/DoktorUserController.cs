@@ -28,7 +28,7 @@ namespace HastaneRandevuSistemi.Areas.Admin.Controllers
         public IActionResult Edit(DoctorViewModel vm)
         {
             _doctorService.UpdateDoctor(vm);
-            return RedirectToAction("Index");
+            return RedirectToAction("AllDoctors");
         }
 
         [HttpGet]
@@ -41,12 +41,14 @@ namespace HastaneRandevuSistemi.Areas.Admin.Controllers
         public IActionResult Create(DoctorViewModel vm)
         {
             _doctorService.InsertDoctor(vm);
-            return RedirectToAction("Index");
+            return RedirectToAction("AllDoctors");
         }
         public IActionResult Delete(int id)
         {
             _doctorService.DeleteDoctor(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("AllDoctors");
+
         }
+
     }
 }
