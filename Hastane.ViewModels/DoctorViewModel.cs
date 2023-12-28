@@ -18,8 +18,7 @@ namespace Hastane.ViewModels
         public bool IsDoctor { get; set; }
         public string UserId { get; set; }
         public string Specialist { get; set; }
-        public ICollection<Appointment> Appointments { get; set; }
-        public ICollection<Timing> Timings { get; set; }
+        public ICollection<Randevu> Randevus { get; set; }
         public int ClinicId { get; set; }
         public DoctorViewModel()
         {
@@ -35,9 +34,8 @@ namespace Hastane.ViewModels
             DateOfBirth = doctor.DateOfBirth;
             IsDoctor = doctor.IsDoctor;
             Specialist = doctor.Specialist;
-            Appointments = doctor.Appointments;
+            Randevus = doctor.Randevus;
             ClinicId = doctor.ClinicId;
-            Timings = doctor.Timings;
             UserId = doctor.UserId;
 
         }
@@ -53,9 +51,8 @@ namespace Hastane.ViewModels
                 DateOfBirth = doctor.DateOfBirth,
                 IsDoctor = doctor.IsDoctor,
                 Specialist = doctor.Specialist,
-                Appointments = doctor.Appointments,
+                Randevus = doctor.Randevus,
                 ClinicId = doctor.ClinicId,
-                Timings = doctor.Timings,
                 UserId = doctor.UserId
             };
         }

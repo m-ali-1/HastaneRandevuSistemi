@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hastane.Repositories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231226175823_ModeltoDatabase")]
+    [Migration("20231228201524_ModeltoDatabase")]
     partial class ModeltoDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,44 +23,6 @@ namespace Hastane.Repositories.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("Hastane.Models.Appointment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("HastaId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Number")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoctorId");
-
-                    b.HasIndex("HastaId");
-
-                    b.ToTable("Appointments");
-                });
 
             modelBuilder.Entity("Hastane.Models.Clinic", b =>
                 {
@@ -160,7 +122,7 @@ namespace Hastane.Repositories.Migrations
                     b.ToTable("Doctors");
                 });
 
-            modelBuilder.Entity("Hastane.Models.Timing", b =>
+            modelBuilder.Entity("Hastane.Models.Randevu", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -168,32 +130,22 @@ namespace Hastane.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AfternoonShiftEndTime")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AfternoonShiftStartTime")
-                        .HasColumnType("int");
-
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
+                    b.Property<string>("HastaEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MorningShiftEndTime")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MorningShiftStartTime")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ScheduleDate")
+                    b.Property<DateTime>("RandevuTarih")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -201,7 +153,7 @@ namespace Hastane.Repositories.Migrations
 
                     b.HasIndex("DoctorId");
 
-                    b.ToTable("Timings");
+                    b.ToTable("Randevus");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -429,19 +381,6 @@ namespace Hastane.Repositories.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
-            modelBuilder.Entity("Hastane.Models.Appointment", b =>
-                {
-                    b.HasOne("Hastane.Models.Doctor", null)
-                        .WithMany("Appointments")
-                        .HasForeignKey("DoctorId");
-
-                    b.HasOne("Hastane.Models.ApplicationUser", "Hasta")
-                        .WithMany()
-                        .HasForeignKey("HastaId");
-
-                    b.Navigation("Hasta");
-                });
-
             modelBuilder.Entity("Hastane.Models.Clinic", b =>
                 {
                     b.HasOne("Hastane.Models.Department", "Department")
@@ -456,7 +395,7 @@ namespace Hastane.Repositories.Migrations
             modelBuilder.Entity("Hastane.Models.Doctor", b =>
                 {
                     b.HasOne("Hastane.Models.Clinic", "Clinic")
-                        .WithMany()
+                        .WithMany("Doctors")
                         .HasForeignKey("ClinicId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -464,14 +403,14 @@ namespace Hastane.Repositories.Migrations
                     b.Navigation("Clinic");
                 });
 
-            modelBuilder.Entity("Hastane.Models.Timing", b =>
+            modelBuilder.Entity("Hastane.Models.Randevu", b =>
                 {
                     b.HasOne("Hastane.Models.ApplicationUser", null)
-                        .WithMany("Timings")
+                        .WithMany("Randevus")
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("Hastane.Models.Doctor", "Doctor")
-                        .WithMany("Timings")
+                        .WithMany("Randevus")
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -530,6 +469,11 @@ namespace Hastane.Repositories.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Hastane.Models.Clinic", b =>
+                {
+                    b.Navigation("Doctors");
+                });
+
             modelBuilder.Entity("Hastane.Models.Department", b =>
                 {
                     b.Navigation("Clinics");
@@ -537,14 +481,12 @@ namespace Hastane.Repositories.Migrations
 
             modelBuilder.Entity("Hastane.Models.Doctor", b =>
                 {
-                    b.Navigation("Appointments");
-
-                    b.Navigation("Timings");
+                    b.Navigation("Randevus");
                 });
 
             modelBuilder.Entity("Hastane.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Timings");
+                    b.Navigation("Randevus");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,14 +1,17 @@
-﻿using Hastane.Services;
+﻿using Hastane.Models;
+using Hastane.Services;
 using Hastane.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 
 namespace HastaneRandevuSistemi.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class DoktorUserController : Controller
+    public class DoktorController : Controller
     {
         private IDoctorService _doctorService;
-        public DoktorUserController(IDoctorService doctorService)
+        public DoktorController(IDoctorService doctorService)
         {
             _doctorService = doctorService;
         }

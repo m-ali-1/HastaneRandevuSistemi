@@ -16,11 +16,10 @@ namespace Hastane.Repositories
 
         }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Randevu> Randevus { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Clinic> Clinics { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
-        public DbSet<Timing> Timings { get; set; }
 
     }
 }

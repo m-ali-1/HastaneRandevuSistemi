@@ -19,8 +19,7 @@ namespace Hastane.Models
         public string Specialist { get; set; }
         public int ClinicId { get; set; }
         public string UserId { get; set; }
-        public ICollection<Appointment> Appointments { get; set; }
-        public ICollection<Timing> Timings { get; set; }
+        public ICollection<Randevu> Randevus { get; set; }
         public Clinic Clinic { get; set; }
     }
 }

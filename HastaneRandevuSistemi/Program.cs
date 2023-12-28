@@ -21,11 +21,11 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 
 builder.Services.AddScoped<IDbInitializier, DbInitializier>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddTransient<IDepartmentInfo, DepartmentService>();
 builder.Services.AddTransient<IClinicService, ClinicService>();
-builder.Services.AddTransient<ITimingService, TimingService>();
 builder.Services.AddTransient<IDoctorService, DoctorService>();
+builder.Services.AddTransient<IRandevuService, RandevuService>();
 builder.Services.AddTransient<IApplicationUserService, ApplicationUserService>();
 
 builder.Services.AddMvc().AddRazorOptions(options =>

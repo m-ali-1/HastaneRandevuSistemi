@@ -14,9 +14,7 @@ namespace Hastane.Models
         public Gender Gender { get; set; }
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
-        [NotMapped]
-        public ICollection<Appointment> Appointments { get; set; }
-        public ICollection<Timing> Timings { get; set; }
+        public ICollection<Randevu> Randevus { get; set; }
     }
 }
 

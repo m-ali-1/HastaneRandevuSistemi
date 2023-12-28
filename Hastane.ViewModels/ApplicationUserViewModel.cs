@@ -15,8 +15,7 @@ namespace Hastane.ViewModels
         public Gender Gender { get; set; }
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string Specialist { get; set; }
-        public ICollection<Appointment> Appointments { get; set; }
+        public ICollection<Randevu> Randevus { get; set; }
         public ApplicationUserViewModel()
         {
 
@@ -27,7 +26,7 @@ namespace Hastane.ViewModels
             Gender = user.Gender;
             Address = user.Address;
             DateOfBirth = user.DateOfBirth;
-            Appointments = user.Appointments;
+            Randevus = user.Randevus;
             Email = user.Email;
             UserName = user.UserName;
         }
@@ -39,7 +38,7 @@ namespace Hastane.ViewModels
                 Gender = user.Gender,
                 Address = user.Address,
                 DateOfBirth = user.DateOfBirth,
-                Appointments = user.Appointments,
+                Randevus = user.Randevus,
                 Email = user.Email,
                 UserName = user.UserName
             };
