@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HastaneRandevuSistemi.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ClinicsController : Controller
     {
         private IClinicService _clinic;

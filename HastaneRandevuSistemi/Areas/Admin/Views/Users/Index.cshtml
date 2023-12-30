@@ -5,46 +5,30 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<br>
+<br>
+<h2>Kullanıcı Listesi</h2>
+<br>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                UserName
-            </th>
-            <th>
-                Gender
-            </th>
-            <th>
-                Address
-            </th>
-            <th>
-                DateOfBirth
-            </th>
-            <th></th>
+            <th scope="col">İsim</th>
+            <th scope="col">Email</th>
+            <th scope="col">Cinsiyet</th>
+            <th scope="col">Adres</th>
+            <th scope="col">Doğum Tarihi</th>
+            <th scope="col">İşlem</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.Data) {
-        <tr>
+            <tr class="table-@((item.Id % 2 == 0) ? "danger" : "active")">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Gender)
@@ -56,9 +40,8 @@
                 @Html.DisplayFor(modelItem => item.DateOfBirth)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a href="@Url.Action("Edit", new { id=item.Id })" class="btn btn-primary btn-sm" role="button">Düzenle</a>
+                <a href="@Url.Action("Delete", new { id=item.Id })" class="btn btn-primary btn-sm" role="button">Sil</a>
             </td>
         </tr>
 }

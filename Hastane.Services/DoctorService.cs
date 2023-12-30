@@ -83,7 +83,7 @@ namespace Hastane.Services
             ModelById.DateOfBirth = Doctor.DateOfBirth;
             ModelById.Gender = Doctor.Gender;
             ModelById.Specialist = Doctor.Specialist;
-            ModelById.ClinicId= Doctor.ClinicId;
+            ModelById.ClinicId= Doctor.ClinicInfo;
             _unitOfWork.GenericRepository<Doctor>().Update(ModelById);
             _unitOfWork.Save();
         }

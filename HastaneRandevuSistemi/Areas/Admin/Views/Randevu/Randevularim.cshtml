@@ -1,37 +1,28 @@
 ﻿@model IEnumerable<Hastane.ViewModels.RandevuViewModel>
 
 @{
-    ViewData["Title"] = "Randevularim";
+    ViewData["Title"] = "Randevularım";
 }
 
-<h1>Randevularim</h1>
+<br>
+<br>
+<h2>Randevularım</h2>
 
-<p>
-    <a asp-action="RandevuAl">Create New</a>
-</p>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.HastaEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RandevuTarih)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DoctorId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
+            <th scope="col">Hasta Email</th>
+            <th scope="col">Randevu Tarihi</th>
+            <th scope="col">Doktor Id</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col">İşlem</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+            <tr class="table-@((item.Id % 2 == 0) ? "light" : "active")">
             <td>
-                @Html.DisplayFor(modelItem => item.HastaEmail)
+                @item.HastaEmail
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RandevuTarih)
@@ -43,11 +34,14 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id  }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                <a href="@Url.Action("Edit", new { id=item.Id })" class="btn btn-primary btn-sm" role="button">Düzenle</a>
+                <a href="@Url.Action("RandevuIptal", new { id=item.Id })" class="btn btn-primary btn-sm" role="button">Sil</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<p>
+    <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("RandevuAl")'">Yeni Randevu Al</button>
+</p>

@@ -1,6 +1,4 @@
-﻿// RandevuService.cs
-
-using Hastane.Models;
+﻿using Hastane.Models;
 using Hastane.Repositories;
 using System;
 using System.Collections.Generic;
@@ -31,6 +29,11 @@ namespace Hastane.Services
         {
             return _context.Randevus.Where(r => r.RandevuTarih.Date == randevuTarih.Date).ToList();
         }
+        public List<Randevu> GetAllRandevular()
+        {
+            // Tüm randevuları veritabanından çekme işlemini gerçekleştirin.
+            return _context.Randevus.ToList();
+        }
 
         public List<Randevu> GetRandevularByDoctorId(int doctorId)
         {
@@ -48,9 +51,6 @@ namespace Hastane.Services
                 RandevuTarih = randevuTarih,
                 Description = description,
                 DoctorId = doctorId,
-                // Doktor ve Hasta bilgilerini daha önce eklediğiniz sınıflardan alabilirsiniz.
-                // Burada örnekte kullanıcı id'si üzerinden bir eşleştirme yapılıyor.
-                Doctor = new Doctor { Id = doctorId, Name = "Dr. Example" },
                 HastaEmail = hastaMail
             };
 

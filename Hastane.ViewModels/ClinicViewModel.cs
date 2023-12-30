@@ -1,6 +1,7 @@
 ﻿using Hastane.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,11 @@ namespace Hastane.ViewModels
     public class ClinicViewModel
     {
         public int Id { get; set; }
-        public string Number { get; set; }
+        [Display(Name = "Poliklinik No")]
+        public int Number { get; set; }
+        [Display(Name = "Durum")]
         public string Status { get; set; }
+        [Display(Name = "Ana Bilim Dalı")]
         public int DepartmentInfo { get; set; }
         public Department Department { get; set; }
         public ClinicViewModel()

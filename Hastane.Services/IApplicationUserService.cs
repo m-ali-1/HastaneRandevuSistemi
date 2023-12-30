@@ -12,6 +12,9 @@ namespace Hastane.Services
     {
         PagedResult<ApplicationUserViewModel> GetAll(int pageNumber, int pageSize);
         PagedResult<ApplicationUserViewModel> GetAllHasta(int pageNumber, int pageSize);
+        ApplicationUserViewModel GetUserById(int id);
+        void UpdateUser(ApplicationUserViewModel user);
+        void DeleteUser(int id);
 
 
     }

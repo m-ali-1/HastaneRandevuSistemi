@@ -19,6 +19,12 @@ namespace Hastane.Services
             _unitOfWork = unitOfWork;
         }
 
+        public void DeleteUser(int id)
+        {
+            var model = _unitOfWork.GenericRepository<ApplicationUser>().GetById(id);
+            _unitOfWork.GenericRepository<ApplicationUser>().Delete(model);
+            _unitOfWork.Save();
+        }
 
         public PagedResult<ApplicationUserViewModel> GetAll(int pageNumber, int pageSize)
         {
@@ -51,15 +57,33 @@ namespace Hastane.Services
             return result;
         }
 
+        public ApplicationUserViewModel GetUserById(int UserId)
+        {
+            var model = _unitOfWork.GenericRepository<ApplicationUser>().GetById(UserId);
+            var vm = new ApplicationUserViewModel(model);
+            return vm;
+        }
+
 
         public PagedResult<ApplicationUserViewModel> GetAllHasta(int pageNumber, int pageSize)
         {
             throw new NotImplementedException();
         }
 
+        public void UpdateUser(ApplicationUserViewModel user)
+        {
+            var model = new ApplicationUserViewModel().ConvertViewModel(user);
+            var ModelById = _unitOfWork.GenericRepository<ApplicationUser>().GetById(model.Id);
+            ModelById.Name = user.Name;
+            ModelById.Gender = user.Gender;
+            ModelById.Address = user.Address;
+            ModelById.DateOfBirth = user.DateOfBirth;
+            ModelById.Email = user.Email;
+            _unitOfWork.GenericRepository<ApplicationUser>().Update(ModelById);
+            _unitOfWork.Save();
+        }
 
-
-        private List<ApplicationUserViewModel>ConvertModelToViewModelList(List<ApplicationUser> modelList)
+        private List<ApplicationUserViewModel> ConvertModelToViewModelList(List<ApplicationUser> modelList)
         {
             return modelList.Select(x => new ApplicationUserViewModel(x)).ToList();
         }

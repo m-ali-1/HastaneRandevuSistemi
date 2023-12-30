@@ -1,8 +1,38 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Hastane Anasayfa";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="jumbotron text-center">
+        <img src="~/images/logo-icon2.png" alt="Hastane Resmi" class="img-fluid rounded-circle" style="max-width: 150px;">
+        <h1 class="display-4">Hoş Geldiniz!</h1>
+        <p class="lead">Hastanemize hoş geldiniz. Sağlığınız bizim için önemli. İhtiyaç duyduğunuz sağlık hizmetlerini almak için randevu alabilirsiniz.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Hastane Hakkında</h2>
+            <p>Hastanemiz, uzman kadrosu ve modern tıbbi ekipmanları ile sizlere kaliteli sağlık hizmeti sunmaktadır. Biz, hastalarımızın sağlığına odaklanmış bir ekibiz.</p>
+        </div>
+        <div class="col-md-6">
+            <h2>Polikliniklerimiz</h2>
+            <p>Hastanemizde birçok uzmanlık alanında hizmet veren poliklinikler bulunmaktadır. Uzman doktorlarımız, sizlere en iyi sağlık hizmetini sunmak için burada.</p>
+            <ul>
+                <li><strong>İç Hastalıkları</strong>: Genel sağlık kontrolü, tansiyon takibi, vb.</li>
+                <li><strong>Cerrahi</strong>: Ameliyatlar, cerrahi müdahaleler.</li>
+
+            </ul>
+        </div>
+        <div class="col-md-12 text-center">
+            <h2>Randevu Sistemi</h2>
+            <div>Randevu alabilmek için kayıt olmanız gerekmektedir.</div>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/Identity/Account/Register" role="button">Kayıt Ol</a>
+            </p>
+            <div>Eğer kayıt olduysanız giriş yapmak için tıklayınız.</div>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/Identity/Account/Login" role="button">Giriş Yap</a>
+            </p>
+        </div>
+    </div>
 </div>

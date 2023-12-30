@@ -4,10 +4,10 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using Hastane.Services;
 using Hastane.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Hastane.Controllers
 {
-    [Area("Admin")]
     public class RandevuController : Controller
     {
         private readonly IRandevuService _randevuService;
@@ -65,7 +65,7 @@ namespace Hastane.Controllers
             if (randevuIptalEdildi)
             {
                 // Başarılı bir şekilde randevu iptal edildiyse, başka bir sayfaya yönlendirme yapabilirsiniz.
-                return RedirectToAction("Randevularim", new { hastaMail = "hastaIdBurayaEklenecek" });
+                return RedirectToAction("Randevularim");
             }
 
             // Hata durumunda tekrar randevu iptal sayfasını göster.
@@ -73,23 +73,57 @@ namespace Hastane.Controllers
         }
 
         // Hasta randevularını listeleyen sayfa
-        public IActionResult Randevularim(string hastaMail)
+        public IActionResult Randevularim()
         {
-            // Hasta id'sine göre randevuları getir ve view'e geçir.
-            var randevular = _randevuService.GetRandevularByHastaId(hastaMail);
-
-            // Randevu modelini RandevuViewModel'e dönüştür.
-            var randevuViewModels = randevular.Select(r => new RandevuViewModel
+            // Kullanıcı oturum açmış mı kontrol et
+            if (User.Identity.IsAuthenticated)
             {
-                Id = r.Id,
-                HastaEmail = r.HastaEmail,
-                RandevuTarih = r.RandevuTarih,
-                DoctorId = r.DoctorId,
-                Description = r.Description
-            }).ToList();
+                // Admin rolüne sahip kullanıcılar tüm randevuları görebilir
+                if (User.IsInRole("Admin"))
+                {
+                    // Admin rolündeki kullanıcılar için tüm randevuları getir ve view'e geçir.
+                    var randevular = _randevuService.GetAllRandevular();
 
-            return View(randevuViewModels);
+                    // Randevu modelini RandevuViewModel'e dönüştür.
+                    var randevuViewModels = randevular.Select(r => new RandevuViewModel
+                    {
+                        Id = r.Id,
+                        HastaEmail = r.HastaEmail,
+                        RandevuTarih = r.RandevuTarih,
+                        DoctorId = r.DoctorId,
+                        Description = r.Description
+                    }).ToList();
+
+                    return View(randevuViewModels);
+                }
+                else
+                {
+                    // Oturum açmışsa, oturum açan kullanıcının e-posta adresini al
+                    string hastaMail = User.Identity.Name;
+
+                    // Hasta id'sine göre randevuları getir ve view'e geçir.
+                    var randevular = _randevuService.GetRandevularByHastaId(hastaMail);
+
+                    // Randevu modelini RandevuViewModel'e dönüştür.
+                    var randevuViewModels = randevular.Select(r => new RandevuViewModel
+                    {
+                        Id = r.Id,
+                        HastaEmail = r.HastaEmail,
+                        RandevuTarih = r.RandevuTarih,
+                        DoctorId = r.DoctorId,
+                        Description = r.Description
+                    }).ToList();
+
+                    return View(randevuViewModels);
+                }
+            }
+
+            // Kullanıcı oturum açmamışsa, giriş yapmalarını iste veya başka bir işlem yapabilirsiniz.
+            // Örneğin, giriş yapma sayfasına yönlendirme yapabilirsiniz.
+            return RedirectToAction("Login");
         }
+
+
 
         // Diğer gerekli action metodları buraya eklenir.
     }

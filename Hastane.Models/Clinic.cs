@@ -1,9 +1,16 @@
-﻿namespace Hastane.Models
+﻿using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Hastane.Models
 {
     public class Clinic
     {
         public int Id { get; set; }
-        public string Number { get; set; }
+        public int Number { get; set; }
         public string Status { get; set; }
         public int DepartmentId { get; set; }
         public Department Department { get; set; }

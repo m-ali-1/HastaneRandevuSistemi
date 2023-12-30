@@ -1,8 +1,10 @@
-﻿// RandevuViewModel.cs
-
+﻿using Hastane.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
+using System.Web.Helpers;
+using System.Xml.Linq;
 
 namespace Hastane.ViewModels
 {
@@ -16,5 +18,30 @@ namespace Hastane.ViewModels
         public int DoctorId { get; set; }
         public string Description { get; set; }
         // İhtiyaca göre diğer gerekli alanları ekleyebilirsiniz.
+
+        public RandevuViewModel()
+        {
+
+        }
+        public RandevuViewModel(Randevu randevu)
+        {
+            Id = randevu.Id;
+            HastaEmail = randevu.HastaEmail;
+            Description = randevu.Description;
+            RandevuTarih = randevu.RandevuTarih;
+            DoctorId = randevu.DoctorId;
+
+        }
+        public Randevu ConvertViewModel(RandevuViewModel randevu)
+        {
+            return new Randevu
+            {
+                Id = randevu.Id,
+                HastaEmail = randevu.HastaEmail,
+                Description = randevu.Description,
+                RandevuTarih = randevu.RandevuTarih,
+                DoctorId = randevu.DoctorId
+            };
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace Hastane.ViewModels
 {
     public class ApplicationUserViewModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
@@ -22,6 +23,7 @@ namespace Hastane.ViewModels
         }
         public ApplicationUserViewModel(ApplicationUser user)
         {
+            Id = user.Id;
             Name = user.Name;
             Gender = user.Gender;
             Address = user.Address;
@@ -34,6 +36,7 @@ namespace Hastane.ViewModels
         {
             return new ApplicationUser
             {
+                Id = user.Id,
                 Name = user.Name,
                 Gender = user.Gender,
                 Address = user.Address,

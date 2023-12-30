@@ -5,32 +5,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<br>
+<br>
+<h2>Poliklinikler</h2>
+<br>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Number
-            </th>
-            <th>
-                Status
-            </th>
-            <th>
-                DepartmentInfo
-            </th>
-            <th></th>
+            <th scope="col">Id</th>
+            <th scope="col">Poliklinik No</th>
+            <th scope="col">Durumu</th>
+            <th scope="col">Ana Bilim Dalı</th>
+            <th scope="col">İşlem</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.Data) {
-        <tr>
+            <tr class="table-@((item.Id % 2 == 0) ? "danger" : "active")">
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
@@ -43,15 +36,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Department.Name)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id=item.Id })" class="btn btn-primary btn-sm" role="button">Düzenle</a>
+                    <a href="@Url.Action("Delete", new { id=item.Id })" class="btn btn-primary btn-sm" role="button">Sil</a>
+                </td>
         </tr>
 }
     </tbody>
 </table>
+
+<p>
+    <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Create")'">Yeni Oluştur</button>
+</p>
 
 <cs-pager cs-paging-pagesize=(int)Model.PageSize
           cs-paging-pagenumber=(int)Model.PageNumber

@@ -5,84 +5,87 @@
     ViewData["Title"] = "AllDoctors";
 }
 
-<h1>AllDoctors</h1>
+<br>
+<br>
+<h2>Doktor Listesi</h2>
+<br>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                UserId
-            </th>
-            <th>
-                IsDoctor
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                Gender
-            </th>
-            <th>
-                Address
-            </th>
-            <th>
-                DateOfBirth
-            </th>
-            <th>
-                Specialist
-            </th>
-            <th></th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th scope="col">Id</th>
+            }
+            <th scope="col">İsim</th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th scope="col">Email</th>
+            }
+            <th scope="col">Cinsiyet</th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th scope="col">Doğum Tarihi</th>
+            }
+            <th scope="col">Uzmanlık</th>
+            <th scope="col">Poliklinik No</th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th scope="col">İşlem</th>
+            }
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Data)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
+            <tr class="table-@((item.Id % 2 == 0) ? "danger" : "active")">
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDoctor)
-                </td>
+                }
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
                 </td>
+                }
                 <td>
                     @Html.DisplayFor(modelItem => item.Gender)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfBirth)
-                </td>
+                }
                 <td>
                     @Html.DisplayFor(modelItem => item.Specialist)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.Id}) |
-                    @Html.ActionLink("Details", "Details", new {  id=item.Id}) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                    @Html.DisplayFor(modelItem => item.Clinic.Number)
                 </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        <a href="@Url.Action("Edit", new { id=item.Id })" class="btn btn-primary btn-sm" role="button">Düzenle</a>
+                    <a href="@Url.Action("Delete", new { id=item.Id })" class="btn btn-primary btn-sm" role="button">Sil</a>
+                </td>
+                }
             </tr>
         }
     </tbody>
 </table>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Create")'">Yeni Oluştur</button>
+    </p>
+}
 <cs-pager cs-paging-pagesize=(int)Model.PageSize
           cs-paging-pagenumber=(int)Model.PageNumber
           cs-paging-totalitems=(int)Model.TotalItems
