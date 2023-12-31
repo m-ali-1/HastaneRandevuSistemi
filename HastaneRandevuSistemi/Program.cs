@@ -7,6 +7,9 @@ using Hastane.Repositories.Interfaces;
 using Hastane.Repositories.Implementation;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Hastane.Services;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,10 +39,44 @@ builder.Services.AddMvc().AddRazorOptions(options =>
     options.ViewLocationFormats.Add("/Pages/Shared/{0}.cshtml");
 });
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
 builder.Services.AddRazorPages();
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var supportedCultures = new[]
+    {
+        new CultureInfo("tr-TR"),
+        new CultureInfo("en-US")
+    };
+    options.DefaultRequestCulture = new RequestCulture("tr-TR");
+    options.SupportedUICultures = supportedCultures;
+});
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 3;
+
+    options.User.RequireUniqueEmail = true;
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/Login";
+    options.SlidingExpiration = true;
+    options.ExpireTimeSpan = TimeSpan.FromDays(1);
+});
 
 var app = builder.Build();
+
+app.UseRequestLocalization();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -72,7 +109,6 @@ app.UseEndpoints(endpoints =>
 
     endpoints.MapRazorPages();
 });
-
 
 app.Run();
 

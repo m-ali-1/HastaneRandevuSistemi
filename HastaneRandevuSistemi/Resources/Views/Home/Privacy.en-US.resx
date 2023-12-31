@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Bu gizlilik politikası hakkında herhangi bir sorunuz veya endişeniz varsa, lütfen y235012005@sakarya.edu.tr adresinden bize ulaşın." xml:space="preserve">
+    <value>If you have any questions or concerns about this privacy policy, please contact us at y235012005@sakarya.edu.tr.</value>
+  </data>
+  <data name="Bu gizlilik politikası, Hastane Randevu Sistemi tarafından uygun görüldüğünde güncellenebilir. Güncellemeleri takip etmek sizin sorumluluğunuzdadır." xml:space="preserve">
+    <value>This privacy policy may be updated by the Hospital Appointment System when deemed appropriate. It is your responsibility to keep track of any updates.</value>
+  </data>
+  <data name="Bu web sitesi, kullanıcı deneyimini geliştirmek için çerezleri kullanabilir. Çerezler, kullanıcının tarayıcısına depolanan küçük metin dosyalarıdır." xml:space="preserve">
+    <value>This website may use cookies to enhance user experience. Cookies are small text files stored in the user's browser.</value>
+  </data>
+  <data name="Değişiklikler" xml:space="preserve">
+    <value>Changes</value>
+  </data>
+  <data name="Gizlilik Politikası" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Güvenlik" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="Hastane Randevu Sistemi, kullanıcı bilgilerini kesinlikle üçüncü taraflarla paylaşmaz veya satmaz. Ancak, yasal bir talep durumunda yetkili makamlara bilgi sağlanabilir." xml:space="preserve">
+    <value>The Hospital Appointment System does not share or sell user information with third parties under any circumstances. However, in the event of a legal request, information may be provided to authorized authorities.</value>
+  </data>
+  <data name="Hastane Randevu Sistemi, kullanıcı bilgilerinin güvenliğini ciddiye alır ve uygun güvenlik önlemlerini uygular. Ancak, internet üzerinden iletişim veya veri depolamanın tam güvenliği garantisi verilemez." xml:space="preserve">
+    <value>The Hospital Appointment System takes the security of user information seriously and implements appropriate security measures. However, it cannot guarantee the full security of communication or data storage over the internet.</value>
+  </data>
+  <data name="Hastane Randevu Sistemi, kullanıcıların sitemizi ziyaret ettiğinde sağladıkları kişisel bilgileri toplayabilir. Bu bilgiler, adınız, e-posta adresiniz, telefon numaranız gibi tanımlayıcı bilgileri içerebilir." xml:space="preserve">
+    <value>The Hospital Appointment System may collect personal information provided by users when they visit our site. This information may include identifying details such as your name, email address, phone number, etc.</value>
+  </data>
+  <data name="Hesaplar oluşturmak ve yönetmek" xml:space="preserve">
+    <value>Creating and managing accounts.</value>
+  </data>
+  <data name="Hoş geldiniz! Bu sayfa, Hastane Randevu Sistemi tarafından sunulan hizmetlerin gizlilik politikasını açıklamaktadır." xml:space="preserve">
+    <value>Welcome! This page explains the privacy policy of the Hospital Appointment System and the services it provides.</value>
+  </data>
+  <data name="Kullanılan Bilgiler" xml:space="preserve">
+    <value>Utilized Information</value>
+  </data>
+  <data name="Sizden gelen taleplere cevap vermek" xml:space="preserve">
+    <value>Responding to requests from you.</value>
+  </data>
+  <data name="Size hizmetlerimizi sunmak" xml:space="preserve">
+    <value>Providing you with our services.</value>
+  </data>
+  <data name="Son güncelleme: 30.12.2023" xml:space="preserve">
+    <value>Last update: 30.12.2023</value>
+  </data>
+  <data name="Toplanan Bilgiler" xml:space="preserve">
+    <value>Collected Information</value>
+  </data>
+  <data name="Toplanan bilgiler, aşağıdaki amaçlar için kullanılabilir:" xml:space="preserve">
+    <value>The collected information may be used for the following purposes:</value>
+  </data>
+  <data name="Çerezler" xml:space="preserve">
+    <value>Cookies</value>
+  </data>
+  <data name="Ürünlerimizi veya hizmetlerimizi geliştirmek" xml:space="preserve">
+    <value>Improving our products or services.</value>
+  </data>
+  <data name="Üçüncü Taraf Paylaşımı" xml:space="preserve">
+    <value>Third-Party Sharing</value>
+  </data>
+</root>

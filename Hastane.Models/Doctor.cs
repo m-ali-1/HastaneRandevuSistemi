@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Hastane.Models
@@ -20,6 +21,7 @@ namespace Hastane.Models
         public int ClinicId { get; set; }
         public string UserId { get; set; }
         public ICollection<Randevu> Randevus { get; set; }
+        [JsonIgnore]
         public Clinic Clinic { get; set; }
     }
 }

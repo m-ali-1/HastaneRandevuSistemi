@@ -11,7 +11,6 @@
 <br>
 <h3>Silmek istediğinize emin misiniz?</h3>
 <div>
-    <h4>RandevuViewModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -40,9 +39,9 @@
         </dd>
     </dl>
 
-    <form asp-action="RandevuIptalConfirmed" method="post">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<form asp-action="RandevuIptalConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button> |
+    <a asp-action="Randevularim">Back to List</a>
+</form>
 </div>

@@ -1,37 +1,47 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@inject IViewLocalizer Localizer
+@{
     ViewData["Title"] = "Gizlilik Politikası";
 }
 
 <br>
 <br>
-<h1>@ViewData["Title"]</h1>
+<h1>@Localizer["Gizlilik Politikası"]</h1>
 
-<p>Hoş geldiniz! Bu sayfa, Hastane Randevu Sistemi tarafından sunulan hizmetlerin gizlilik politikasını açıklamaktadır.</p>
+<p>@Localizer["Hoş geldiniz! Bu sayfa, Hastane Randevu Sistemi tarafından sunulan hizmetlerin gizlilik politikasını açıklamaktadır."]</p>
 
-<h2>Toplanan Bilgiler</h2>
-<p>Hastane Randevu Sistemi, kullanıcıların sitemizi ziyaret ettiğinde sağladıkları kişisel bilgileri toplayabilir. Bu bilgiler, adınız, e-posta adresiniz, telefon numaranız gibi tanımlayıcı bilgileri içerebilir.</p>
+<h2>@Localizer["Toplanan Bilgiler"]</h2>
+    <p>@Localizer["Hastane Randevu Sistemi, kullanıcıların sitemizi ziyaret ettiğinde sağladıkları kişisel bilgileri toplayabilir. Bu bilgiler, adınız, e-posta adresiniz, telefon numaranız gibi tanımlayıcı bilgileri içerebilir."]</p>
 
-<h2>Kullanılan Bilgiler</h2>
-<p>Toplanan bilgiler, aşağıdaki amaçlar için kullanılabilir:</p>
+<h2>@Localizer["Kullanılan Bilgiler"]</h2>
+<p>@Localizer["Toplanan bilgiler, aşağıdaki amaçlar için kullanılabilir:"]</p>
 <ul>
-    <li>Hesaplar oluşturmak ve yönetmek</li>
-    <li>Size hizmetlerimizi sunmak</li>
-    <li>Ürünlerimizi veya hizmetlerimizi geliştirmek</li>
-    <li>Sizden gelen taleplere cevap vermek</li>
+    <li>@Localizer["Hesaplar oluşturmak ve yönetmek"]</li>
+    <li>@Localizer["Size hizmetlerimizi sunmak"]</li>
+    <li>@Localizer["Ürünlerimizi veya hizmetlerimizi geliştirmek"]</li>
+    <li>@Localizer["Sizden gelen taleplere cevap vermek"]</li>
 </ul>
 
-<h2>Üçüncü Taraf Paylaşımı</h2>
-<p>Hastane Randevu Sistemi, kullanıcı bilgilerini kesinlikle üçüncü taraflarla paylaşmaz veya satmaz. Ancak, yasal bir talep durumunda yetkili makamlara bilgi sağlanabilir.</p>
+<h2>@Localizer["Üçüncü Taraf Paylaşımı"]</h2>
+<p>@Localizer["Hastane Randevu Sistemi, kullanıcı bilgilerini kesinlikle üçüncü taraflarla paylaşmaz veya satmaz. Ancak, yasal bir talep durumunda yetkili makamlara bilgi sağlanabilir."]</p>
 
-<h2>Çerezler</h2>
-<p>Bu web sitesi, kullanıcı deneyimini geliştirmek için çerezleri kullanabilir. Çerezler, kullanıcının tarayıcısına depolanan küçük metin dosyalarıdır.</p>
+<h2>@Localizer["Çerezler"]</h2>
+<p>@Localizer["Bu web sitesi, kullanıcı deneyimini geliştirmek için çerezleri kullanabilir. Çerezler, kullanıcının tarayıcısına depolanan küçük metin dosyalarıdır."]</p>
 
-<h2>Güvenlik</h2>
-<p>Hastane Randevu Sistemi, kullanıcı bilgilerinin güvenliğini ciddiye alır ve uygun güvenlik önlemlerini uygular. Ancak, internet üzerinden iletişim veya veri depolamanın tam güvenliği garantisi verilemez.</p>
+<h2>@Localizer["Güvenlik"]</h2>
+<p>@Localizer["Hastane Randevu Sistemi, kullanıcı bilgilerinin güvenliğini ciddiye alır ve uygun güvenlik önlemlerini uygular. Ancak, internet üzerinden iletişim veya veri depolamanın tam güvenliği garantisi verilemez."]</p>
 
-<h2>Değişiklikler</h2>
-<p>Bu gizlilik politikası, Hastane Randevu Sistemi tarafından uygun görüldüğünde güncellenebilir. Güncellemeleri takip etmek sizin sorumluluğunuzdadır.</p>
+<h2>@Localizer["Değişiklikler"]</h2>
+<p>@Localizer["Bu gizlilik politikası, Hastane Randevu Sistemi tarafından uygun görüldüğünde güncellenebilir. Güncellemeleri takip etmek sizin sorumluluğunuzdadır."]</p>
 
-<p>Bu gizlilik politikası hakkında herhangi bir sorunuz veya endişeniz varsa, lütfen [e-posta adresiniz] adresinden bize ulaşın.</p>
+<p>@Localizer["Bu gizlilik politikası hakkında herhangi bir sorunuz veya endişeniz varsa, lütfen y235012005@sakarya.edu.tr adresinden bize ulaşın."]</p>
 
-<p>Son güncelleme: 30.12.2023</p>
+<p>@Localizer["Son güncelleme: 30.12.2023"]</p>
+
+<div class="col-md-12 text-center">
+    <p>
+        <a class="btn btn-info" href="/Home/Privacy" role="button">Türkçe</a>
+        <a class="btn btn-info" href="/Home/Privacy/?ui-culture=en-US" role="button">English</a>
+    </p>
+</div>

@@ -28,8 +28,10 @@ namespace Hastane.Services
             {
                 int ExcludeRecords = (pageSize * pageNumber) - pageSize;
 
-                var modelList = _unitOfWork.GenericRepository<Doctor>().GetAll(x => x.IsDoctor == true)
-                    .Skip(ExcludeRecords).Take(pageSize).ToList();
+                var modelList = _unitOfWork.GenericRepository<Doctor>().GetAll(
+                        filter: x => x.IsDoctor == true,
+                        includeProperties: "Clinic"
+                        ).Skip(ExcludeRecords).Take(pageSize).ToList();
 
                 totalCount = _unitOfWork.GenericRepository<Doctor>().GetAll(x => x.IsDoctor == true).ToList().Count;
 
@@ -75,7 +77,6 @@ namespace Hastane.Services
         {
             var model = new DoctorViewModel().ConvertViewModel(Doctor);
             var ModelById = _unitOfWork.GenericRepository<Doctor>().GetById(model.Id);
-            ModelById.Id = Doctor.Id;
             ModelById.IsDoctor = Doctor.IsDoctor;
             ModelById.Name = Doctor.Name;
             ModelById.Email = Doctor.Email;

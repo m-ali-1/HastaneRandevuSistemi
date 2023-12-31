@@ -23,7 +23,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model.Data) {
-            <tr class="table-@((item.Id % 2 == 0) ? "danger" : "active")">
+            <tr class="table-@((item.Id % 2 == 0) ? "light" : "active")">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

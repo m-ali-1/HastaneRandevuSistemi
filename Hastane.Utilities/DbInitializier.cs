@@ -46,13 +46,13 @@ namespace Hastane.Utilities
 
                 var AppUser = new IdentityUser
                 {
-                    UserName = "ali@denemeali.com",
-                    Email = "ali@denemeali.com"
+                    UserName = "y235012005@sakarya.edu.tr",
+                    Email = "y235012005@sakarya.edu.tr"
                 };
 
-                _userManager.CreateAsync(AppUser, "AliDeneme.123").GetAwaiter().GetResult();
+                _userManager.CreateAsync(AppUser, "sau").GetAwaiter().GetResult();
 
-                var createdAppUser = _context.Users.FirstOrDefault(x => x.Email == "ali@denemeali.com");
+                var createdAppUser = _context.Users.FirstOrDefault(x => x.Email == "y235012005@sakarya.edu.tr");
                 if (createdAppUser != null)
                 {
                     _userManager.AddToRoleAsync(createdAppUser, WebSiteRoles.WebSite_Admin).GetAwaiter().GetResult();

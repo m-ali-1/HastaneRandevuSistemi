@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Hastane.Models
@@ -14,6 +15,7 @@ namespace Hastane.Models
         public string Status { get; set; }
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
+        [JsonIgnore]
         public ICollection<Doctor> Doctors { get; set; }
     }
 }

@@ -26,8 +26,7 @@ namespace Hastane.ViewModels
         public string UserId { get; set; }
         [Display(Name = "Uzmanlığı veya Ünvanı")]
         public string Specialist { get; set; }
-        public ICollection<Randevu> Randevus { get; set; }
-        [Display(Name = "Hangi Poliklinik")]
+        [Display(Name = "Poliklinik Id")]
         public int ClinicInfo { get; set; }
         public Clinic Clinic { get; set; }
         public DoctorViewModel()
@@ -44,7 +43,6 @@ namespace Hastane.ViewModels
             DateOfBirth = doctor.DateOfBirth;
             IsDoctor = doctor.IsDoctor;
             Specialist = doctor.Specialist;
-            Randevus = doctor.Randevus;
             UserId = doctor.UserId;
             ClinicInfo = doctor.ClinicId;
             Clinic = doctor.Clinic;
@@ -62,7 +60,6 @@ namespace Hastane.ViewModels
                 DateOfBirth = doctor.DateOfBirth,
                 IsDoctor = doctor.IsDoctor,
                 Specialist = doctor.Specialist,
-                Randevus = doctor.Randevus,
                 UserId = doctor.UserId,
                 ClinicId = doctor.ClinicInfo,
                 Clinic = doctor.Clinic

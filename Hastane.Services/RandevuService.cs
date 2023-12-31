@@ -69,14 +69,24 @@ namespace Hastane.Services
 
         public bool RandevuIptal(int randevuId)
         {
-            Randevu randevu = GetRandevuById(randevuId);
-            if (randevu != null)
+            try
             {
-                _context.Randevus.Remove(randevu);
-                return true; // Başarıyla randevu iptal edildi.
-            }
+                Randevu randevu = GetRandevuById(randevuId);
+                if (randevu != null)
+                {
+                    _context.Randevus.Remove(randevu);
+                    _context.SaveChanges();
+                    return true; // Başarıyla randevu iptal edildi.
+                }
 
-            return false; // Randevu bulunamadı.
+                return false; // Randevu bulunamadı.
+            }
+            catch (Exception ex)
+            {
+                // Hata durumunda loglama yapabilir veya hata mesajını gönderebilirsiniz.
+                Console.WriteLine($"Randevu iptali sırasında bir hata oluştu: {ex.Message}");
+                return false; // Hata durumunda false döndür.
+            }
         }
     }
 }

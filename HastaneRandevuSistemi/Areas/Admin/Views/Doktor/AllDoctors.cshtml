@@ -13,10 +13,7 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            @if (User.IsInRole("Admin"))
-            {
-                <th scope="col">Id</th>
-            }
+            <th scope="col">Id</th>
             <th scope="col">İsim</th>
             @if (User.IsInRole("Admin"))
             {
@@ -39,12 +36,9 @@
         @foreach (var item in Model.Data)
         {
             <tr class="table-@((item.Id % 2 == 0) ? "danger" : "active")">
-                @if (User.IsInRole("Admin"))
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
                 </td>
-                }
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>

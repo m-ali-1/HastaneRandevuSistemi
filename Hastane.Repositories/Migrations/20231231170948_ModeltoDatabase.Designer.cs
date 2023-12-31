@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hastane.Repositories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231230184355_ModeltoDatabase")]
+    [Migration("20231231170948_ModeltoDatabase")]
     partial class ModeltoDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

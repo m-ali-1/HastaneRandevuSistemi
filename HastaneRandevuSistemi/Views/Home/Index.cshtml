@@ -1,37 +1,52 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@inject IViewLocalizer Localizer
+@{
     ViewData["Title"] = "Hastane Anasayfa";
 }
 
 <div class="container">
     <div class="jumbotron text-center">
         <img src="~/images/logo-icon2.png" alt="Hastane Resmi" class="img-fluid rounded-circle" style="max-width: 150px;">
-        <h1 class="display-4">Hoş Geldiniz!</h1>
-        <p class="lead">Hastanemize hoş geldiniz. Sağlığınız bizim için önemli. İhtiyaç duyduğunuz sağlık hizmetlerini almak için randevu alabilirsiniz.</p>
+        <h1 class="display-4">@Localizer["Hoş Geldiniz!"]</h1>
+        <p class="lead">@Localizer["Hastanemize hoş geldiniz. Sağlığınız bizim için önemli. İhtiyaç duyduğunuz sağlık hizmetlerini almak için randevu alabilirsiniz."]</p>
     </div>
 
     <div class="row">
         <div class="col-md-6">
-            <h2>Hastane Hakkında</h2>
-            <p>Hastanemiz, uzman kadrosu ve modern tıbbi ekipmanları ile sizlere kaliteli sağlık hizmeti sunmaktadır. Biz, hastalarımızın sağlığına odaklanmış bir ekibiz.</p>
+            <h2>@Localizer["Hastane Hakkında"]</h2>
+            <p>@Localizer["Hastanemiz, uzman kadrosu ve modern tıbbi ekipmanları ile sizlere kaliteli sağlık hizmeti sunmaktadır. Biz, hastalarımızın sağlığına odaklanmış bir ekibiz."]</p>
         </div>
         <div class="col-md-6">
-            <h2>Polikliniklerimiz</h2>
-            <p>Hastanemizde birçok uzmanlık alanında hizmet veren poliklinikler bulunmaktadır. Uzman doktorlarımız, sizlere en iyi sağlık hizmetini sunmak için burada.</p>
+            <h2>@Localizer["Polikliniklerimiz"]</h2>
+            <p>@Localizer["Hastanemizde birçok uzmanlık alanında hizmet veren poliklinikler bulunmaktadır. Uzman doktorlarımız, sizlere en iyi sağlık hizmetini sunmak için burada."]</p>
             <ul>
-                <li><strong>İç Hastalıkları</strong>: Genel sağlık kontrolü, tansiyon takibi, vb.</li>
-                <li><strong>Cerrahi</strong>: Ameliyatlar, cerrahi müdahaleler.</li>
+                <li><strong>@Localizer["İç Hastalıkları"]</strong>:@Localizer["Genel sağlık kontrolü, tansiyon takibi, vb."]</li>
+                <li><strong>@Localizer["Cerrahi"]</strong>:@Localizer["Ameliyatlar, cerrahi müdahaleler."]</li>
 
             </ul>
         </div>
         <div class="col-md-12 text-center">
-            <h2>Randevu Sistemi</h2>
-            <div>Randevu alabilmek için kayıt olmanız gerekmektedir.</div>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <h2>@Localizer["Randevu Sistemi"]</h2>
+                <div>@Localizer["Randevu alabilmek için kayıt olmanız gerekmektedir."]</div>
+                <div>@Localizer["Buradan kayıt olabilirsiniz!"]</div>
+                <p>
+                    <a class="btn btn-primary" href="/Identity/Account/Register" role="button">@Localizer["Kayıt Ol"]</a>
+                </p>
+                <div>@Localizer["Eğer kayıt olduysanız giriş yapmak için tıklayınız."]</div>
+                <p>
+                    <a class="btn btn-primary" href="/Identity/Account/Login" role="button">@Localizer["Giriş Yap"]</a>
+                </p>
+            }
+            <br>
+            <br>
+        </div>
+        <div class="col-md-12 text-center">
             <p>
-                <a class="btn btn-primary btn-lg" href="/Identity/Account/Register" role="button">Kayıt Ol</a>
-            </p>
-            <div>Eğer kayıt olduysanız giriş yapmak için tıklayınız.</div>
-            <p>
-                <a class="btn btn-primary btn-lg" href="/Identity/Account/Login" role="button">Giriş Yap</a>
+                <a class="btn btn-info" href="/Home" role="button">Türkçe</a>
+                <a class="btn btn-info" href="/?ui-culture=en-US" role="button">English</a>
             </p>
         </div>
     </div>

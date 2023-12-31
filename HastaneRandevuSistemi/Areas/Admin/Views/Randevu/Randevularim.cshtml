@@ -34,8 +34,7 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                <a href="@Url.Action("Edit", new { id=item.Id })" class="btn btn-primary btn-sm" role="button">Düzenle</a>
-                <a href="@Url.Action("RandevuIptal", new { id=item.Id })" class="btn btn-primary btn-sm" role="button">Sil</a>
+                <a href="@Url.Action("RandevuIptal", new { randevuId = item.Id })" class="btn btn-primary btn-sm" role="button">Sil</a>
             </td>
         </tr>
 }
